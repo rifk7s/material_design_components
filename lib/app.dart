@@ -40,7 +40,7 @@ class _ShrineAppState extends State<ShrineApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shrine',
+      title: 'Acatel',
       initialRoute: '/login',
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
