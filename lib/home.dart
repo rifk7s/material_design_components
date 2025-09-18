@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'supplemental/asymmetric_view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -36,6 +38,7 @@ class HomePage extends StatelessWidget {
       return Card(
         clipBehavior: Clip.antiAlias,
         // TODO: Adjust card heights (103)
+        elevation: 0.0,
         child: Column(
           // TODO: Center items on the card (103)
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +48,7 @@ class HomePage extends StatelessWidget {
               child: Image.asset(
                 product.assetName,
                 package: product.assetPackage,
-                fit:BoxFit.fitWidth,
+                fit: BoxFit.fitWidth,
               ),
             ),
             Expanded(
@@ -53,20 +56,24 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                 child: Column(
                   // TODO: Align labels to the bottom and center (103)
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   // TODO: Change innermost Column (103)
                   children: <Widget>[
                     // TODO: Handle overflowing labels (103)
                     Text(
                       product.name,
-                      style: theme.textTheme.titleLarge,
+                      style: theme.textTheme.labelLarge,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height: 4.0),
                     Text(
                       formatter.format(product.price),
-                      style: theme.textTheme.titleSmall,
+                      style: theme.textTheme.bodySmall,
                     ),
+                    // End new code
                   ],
                 ),
               ),
@@ -83,9 +90,7 @@ class HomePage extends StatelessWidget {
     // TODO: Return an AsymmetricView (104)
     // TODO: Pass Category variable to AsymmetricView (104)
     return Scaffold(
-      
       appBar: AppBar(
-        
         leading: IconButton(
           icon: const Icon(Icons.menu, semanticLabel: 'menu'),
           onPressed: () {
@@ -93,7 +98,6 @@ class HomePage extends StatelessWidget {
           },
         ),
         title: const Text('Acatel'),
-        
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -115,13 +119,14 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: const EdgeInsets.all(16.0),
-        childAspectRatio: 8.0 / 9.0,
-        
-        children: _buildGridCards(context),
+      // body: GridView.count(
+      //   crossAxisCount: 2,
+      //   padding: const EdgeInsets.all(16.0),
+      //   childAspectRatio: 8.0 / 9.0,
+      //   children: _buildGridCards(context),
+      // ),
+      body: AsymmetricView(
+        products: ProductsRepository.loadProducts(Category.all),
       ),
       resizeToAvoidBottomInset: false,
     );
