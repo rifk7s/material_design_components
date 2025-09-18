@@ -1,4 +1,4 @@
-package com.example.shrine
+package com.example.acatel
 
 import io.flutter.embedding.android.FlutterActivity
 

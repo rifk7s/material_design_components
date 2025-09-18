@@ -257,7 +257,7 @@ class _BackdropState extends State<Backdrop>
       // title: Text('ACATEL'),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons (104)
-  
+
         IconButton(
           icon: const Icon(
             Icons.search,
@@ -267,8 +267,7 @@ class _BackdropState extends State<Backdrop>
             // TODO: Add open login (104)
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => LoginPage()),
+              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
             );
           },
         ),
@@ -281,8 +280,7 @@ class _BackdropState extends State<Backdrop>
             // TODO: Add open login (104)
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => LoginPage()),
+              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
             );
           },
         ),
