@@ -27,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -34,9 +35,9 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
+                Image.asset('assets/rifky-test.png', width: 64, height: 64),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE TEST BETA SIGMA'),
+                const Text('Acatel', style: TextStyle(fontSize: 20.0)),
               ],
             ),
             const SizedBox(height: 120.0),
