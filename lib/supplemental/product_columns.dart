@@ -34,9 +34,12 @@ class TwoProductCardColumn extends StatelessWidget {
       const spacerHeight = 44.0;
 
       double heightOfCards = (constraints.biggest.height - spacerHeight) / 2.0;
-      double heightOfImages = heightOfCards - ProductCard.kTextBoxHeight;
+      final double safeHeightOfCards =
+          heightOfCards < 0.0 ? 0.0 : heightOfCards;
+      double heightOfImages = safeHeightOfCards - ProductCard.kTextBoxHeight;
       // TODO: Change imageAspectRatio calculation (104)
-      double imageAspectRatio = heightOfImages >= 0.0
+      // Use a safe image height and avoid dividing by zero or negative values.
+      double imageAspectRatio = heightOfImages > 0.0
           ? constraints.biggest.width / heightOfImages
           : 49.0 / 33.0;
       // TODO: Replace Column with a ListView (104)
@@ -51,7 +54,7 @@ class TwoProductCardColumn extends StatelessWidget {
                     product: top!,
                   )
                 : SizedBox(
-                    height: heightOfCards,
+                    height: safeHeightOfCards,
                   ),
           ),
           const SizedBox(height: spacerHeight),
