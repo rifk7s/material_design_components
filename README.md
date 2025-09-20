@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/diamond.png" alt="ACATEL Logo" height="64" />
+<img src="./assets/rifky-test.png" alt="ACATEL Logo" height="64" />
 
 # ACATEL - Material Design Commerce App
 
