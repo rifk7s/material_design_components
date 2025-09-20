@@ -72,7 +72,6 @@ Before running this application, ensure you have the following installed:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/rifk7s/material_design_components.git
-   cd material_design_components/mdc_100_series
    ```
 
 2. **Install dependencies**
