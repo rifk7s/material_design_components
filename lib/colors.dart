@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-const kShrinePink50 = Color(0xFFFEEAE6);
-const kShrinePink100 = Color(0xFFFEDBD0);
-const kShrinePink300 = Color(0xFFFBB8AC);
-const kShrinePink400 = Color(0xFFEAA4A4);
+// Blue color palette inspired by ACATEL logo
+const kAcatelBlue50 = Color(0xFFE3F2FD);
+const kAcatelBlue100 = Color(0xFFBBDEFB);
+const kAcatelBlue300 = Color(0xFF64B5F6);
+const kAcatelBlue400 = Color(0xFF42A5F5);
 
-const kShrineBrown900 = Color(0xFF442B2D);
+const kAcatelDarkBlue900 = Color(0xFF0D47A1);
 
-const kShrineErrorRed = Color(0xFFC5032B);
+const kAcatelErrorRed = Color(0xFFC5032B);
 
-const kShrineSurfaceWhite = Color(0xFFFFFBFA);
-const kShrineBackgroundWhite = Colors.white;
+const kAcatelSurfaceWhite = Color(0xFFFAFCFF);
+const kAcatelBackgroundWhite = Colors.white;
 
-const kShrinePurple = Color(0xFF5D1049);
+const kAcatelPrimary = Color(0xFF1976D2);
