@@ -50,28 +50,61 @@ class ProductCard extends StatelessWidget {
           aspectRatio: imageAspectRatio,
           child: imageWidget,
         ),
-        SizedBox(
-          height: kTextBoxHeight * MediaQuery.of(context).textScaleFactor,
-          width: 121.0,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                product.name,
-                style: theme.textTheme.labelLarge,
-                softWrap: false,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-              const SizedBox(height: 4.0),
-              Text(
-                formatter.format(product.price),
-                style: theme.textTheme.bodySmall,
-              ),
-            ],
-          ),
-        ),
+        Builder(builder: (context) {
+          final TextStyle nameStyle =
+              (theme.textTheme.labelLarge ?? const TextStyle())
+                  .copyWith(color: Colors.black);
+          final TextStyle priceStyle =
+              (theme.textTheme.bodySmall ?? const TextStyle())
+                  .copyWith(color: Colors.black);
+          final double scale = MediaQuery.of(context).textScaler.scale(1.0);
+          const double horizontalPadding = 16.0;
+          final double maxWidth = 121.0 - horizontalPadding;
+
+          final TextPainter nameTp = TextPainter(
+            text: TextSpan(text: product.name, style: nameStyle),
+            textDirection: Directionality.of(context),
+            maxLines: 10,
+          )..layout(maxWidth: maxWidth);
+
+          final TextPainter priceTp = TextPainter(
+            text: TextSpan(
+                text: formatter.format(product.price), style: priceStyle),
+            textDirection: Directionality.of(context),
+          )..layout(maxWidth: maxWidth);
+
+          final double nameHeight = nameTp.size.height;
+          final double priceHeight = priceTp.size.height;
+          final double contentHeight = nameHeight + 4.0 + priceHeight;
+
+          final double baseHeight = kTextBoxHeight * scale;
+          final double maxHeight = baseHeight * 3;
+          final double desiredHeight = contentHeight + 16.0;
+          final double finalHeight = desiredHeight.clamp(baseHeight, maxHeight);
+
+          return Container(
+            width: 121.0,
+            height: finalHeight,
+            padding: const EdgeInsets.fromLTRB(8.0, 6.0, 8.0, 8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  product.name,
+                  style: nameStyle,
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                ),
+                const SizedBox(height: 4.0),
+                Text(
+                  formatter.format(product.price),
+                  style: priceStyle,
+                ),
+              ],
+            ),
+          );
+        }),
       ],
     );
   }

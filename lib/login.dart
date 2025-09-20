@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: kAcatelSurfaceWhite,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -45,8 +45,6 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(height: 120.0),
-            // TODO: Remove filled: true values (103)
-            // [NAME]
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
@@ -58,43 +56,39 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _passwordController,
               decoration: const InputDecoration(
-                // Removed filled: true
                 labelText: 'Password',
               ),
               obscureText: true,
             ),
             OverflowBar(
               alignment: MainAxisAlignment.end,
-              // TODO: Add a beveled rectangular border to CANCEL (103)
               children: <Widget>[
                 TextButton(
-                  child: const Text('CANCEL'),
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: kShrineBrown900,
+                    foregroundColor: kAcatelDarkBlue900,
                     shape: const BeveledRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(7.0)),
                     ),
                   ),
+                  child: const Text('CANCEL'),
                 ),
-                // TODO: Add an elevation to Next (103)
-                // TODO: Add a beveled rectangular border to NEXT (103)
                 ElevatedButton(
-                  child: const Text('NEXT'),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: kShrineBrown900,
-                    backgroundColor: kShrinePink100,
+                    foregroundColor: Colors.white,
+                    backgroundColor: kAcatelPrimary,
                     elevation: 8.0,
                     shape: const BeveledRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(7.0)),
                     ),
                   ),
+                  child: const Text('NEXT'),
                 ),
               ],
             )
